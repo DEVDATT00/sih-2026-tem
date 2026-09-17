@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get the App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #17202B;
+      --bg-panel: #1F2A38;
+      --text: #F3EFE6;
+      --text-dim: #A9B4C0;
+      --accent: #E8A33D;
+      --accent-dim: #C6862A;
+      --border: rgba(243, 239, 230, 0.12);
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme="dark"]) {
+        --bg: #F3EFE6;
+        --bg-panel: #FFFFFF;
+        --text: #17202B;
+        --text-dim: #5A6472;
+        --accent: #C6862A;
+        --accent-dim: #A96F1F;
+        --border: rgba(23, 32, 43, 0.12);
+      }
+    }
+
+    :root[data-theme="light"] {
+      --bg: #F3EFE6;
+      --bg-panel: #FFFFFF;
+      --text: #17202B;
+      --text-dim: #5A6472;
+      --accent: #C6862A;
+      --accent-dim: #A96F1F;
+      --border: rgba(23, 32, 43, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.5;
+    }
+
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    header {
+      padding: 28px 0;
+    }
+
+    header .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 1.25rem;
+      letter-spacing: -0.01em;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .hero {
+      padding: 56px 0 88px;
+    }
+
+    .hero .wrap {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    @media (max-width: 760px) {
+      .hero .wrap {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero {
+        padding: 24px 0 56px;
+      }
+    }
+
+    .hero h1 {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      line-height: 1.08;
+      letter-spacing: -0.015em;
+      margin: 0 0 20px;
+      max-width: 12ch;
+    }
+
+    .hero p.lede {
+      font-size: 1.1rem;
+      color: var(--text-dim);
+      max-width: 42ch;
+      margin: 0 0 32px;
+    }
+
+    .cta-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent);
+      color: #17202B;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 14px 26px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+
+    .btn-download:hover {
+      background: var(--accent-dim);
+      transform: translateY(-1px);
+    }
+
+    .btn-download:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .btn-download svg {
+      width: 18px;
+      height: 18px;
+      flex: none;
+    }
+
+    .meta {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    .phone-frame {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 18px;
+      box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.5);
+    }
+
+    .phone-screen {
+      aspect-ratio: 9 / 16;
+      width: 100%;
+      border-radius: 16px;
+      background:
+        repeating-linear-gradient(135deg, rgba(232, 163, 61, 0.08) 0 2px, transparent 2px 14px),
+        var(--bg);
+      border: 1px dashed var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 10px;
+      padding: 24px;
+      overflow: hidden;
+    }
+
+    .phone-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
+    .phone-screen .ph-label {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    .phone-screen .ph-icon {
+      width: 40px;
+      height: 40px;
+      opacity: 0.5;
+    }
+
+    section.about {
+      padding: 0 0 80px;
+      border-top: 1px solid var(--border);
+      padding-top: 64px;
+    }
+
+    section.about h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 1.6rem;
+      margin: 0 0 18px;
+    }
+
+    section.about p {
+      color: var(--text-dim);
+      max-width: 62ch;
+      font-size: 1.02rem;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 760px) {
+      .features {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .feature {
+      padding: 22px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .feature h3 {
+      font-size: 1.02rem;
+      margin: 0 0 8px;
+      font-weight: 600;
+    }
+
+    .feature p {
+      margin: 0;
+      font-size: 0.92rem;
+      color: var(--text-dim);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0 48px;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+    }
+
+    section.gallery {
+      padding: 0 0 80px;
+      border-top: 1px solid var(--border);
+      padding-top: 64px;
+    }
+
+    section.gallery h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 1.6rem;
+      margin: 0 0 24px;
+    }
+
+    .gallery-track {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scroll-snap-type: x proximity;
+    }
+
+    .gallery-track::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .gallery-track::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 8px;
+    }
+
+    .gallery-item {
+      flex: 0 0 auto;
+      width: 220px;
+      scroll-snap-align: start;
+    }
+
+    .gallery-item .shot {
+      aspect-ratio: 9 / 16;
+      width: 100%;
+      border-radius: 16px;
+      background:
+        repeating-linear-gradient(135deg, rgba(232, 163, 61, 0.08) 0 2px, transparent 2px 14px),
+        var(--bg-panel);
+      border: 1px dashed var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 8px;
+      padding: 16px;
+      overflow: hidden;
+    }
+
+    .gallery-item .shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
+    .gallery-item .shot .ph-icon {
+      width: 28px;
+      height: 28px;
+      opacity: 0.5;
+    }
+
+    .gallery-item .shot .ph-label {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+
+    .gallery-item .caption {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="wrap">
+      <div class="brand">Your App<span>Name</span></div>
+      <div class="meta">Android · APK</div>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>A short, honest headline about what your app does</h1>
+        <p class="lede">
+          Replace this paragraph with one or two sentences describing what your app is for
+          and who it's for. Keep it plain and specific — say what the app actually does.
+        </p>
+        <div class="cta-row">
+          <!--
+          EDIT ME: replace href="REPLACE_WITH_APK_URL" below with the direct link
+          to your hosted APK (GitHub Releases, your own server, etc). The APK file
+          is too large to embed directly in this page.
+        -->
+          <a class="btn-download" id="download-btn" href="REPLACE_WITH_APK_URL" download="app-release.apk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M12 3v12" />
+              <path d="M7 10l5 5 5-5" />
+              <path d="M5 21h14" />
+            </svg>
+            Download for Android
+          </a>
+          <span class="meta">Version 1.0 · ~52 MB</span>
+        </div>
+      </div>
+
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <!--
+          EDIT ME: replace this placeholder block with:
+          <img src="your-image.jpg" alt="App screenshot">
+        -->
+          <svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <circle cx="8.5" cy="8.5" r="1.5" />
+            <path d="M21 15l-5-5L5 21" />
+          </svg>
+          <div class="ph-label">Replace with your app screenshot<br>or logo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="about">
+    <div class="wrap">
+      <h2>About the app</h2>
+      <p>
+        Replace this with a slightly longer description — what problem it solves,
+        how it works, or what makes it useful. Two or three sentences is usually enough.
+      </p>
+
+      <div class="features">
+        <div class="feature">
+          <h3>Feature one</h3>
+          <p>One line explaining a key feature or benefit.</p>
+        </div>
+        <div class="feature">
+          <h3>Feature two</h3>
+          <p>One line explaining a key feature or benefit.</p>
+        </div>
+        <div class="feature">
+          <h3>Feature three</h3>
+          <p>One line explaining a key feature or benefit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery">
+    <div class="wrap">
+      <h2>Screenshots</h2>
+      <!--
+      EDIT ME: this row holds multiple images. To add your own:
+      1. Duplicate a .gallery-item block for each screenshot you have.
+      2. Inside each .shot div, replace the placeholder svg+label with:
+         <img src="your-image.jpg" alt="Describe this screenshot">
+      3. Update the caption text under each one (or delete the caption div).
+    -->
+      <div class="gallery-track">
+        <div class="gallery-item">
+          <div class="shot">
+            <svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="M21 15l-5-5L5 21" />
+            </svg>
+            <div class="ph-label">Screenshot 1</div>
+          </div>
+          <div class="caption">Home screen</div>
+        </div>
+        <div class="gallery-item">
+          <div class="shot">
+            <svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="M21 15l-5-5L5 21" />
+            </svg>
+            <div class="ph-label">Screenshot 2</div>
+          </div>
+          <div class="caption">Feature view</div>
+        </div>
+        <div class="gallery-item">
+          <div class="shot">
+            <svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="M21 15l-5-5L5 21" />
+            </svg>
+            <div class="ph-label">Screenshot 3</div>
+          </div>
+          <div class="caption">Settings</div>
+        </div>
+        <div class="gallery-item">
+          <div class="shot">
+            <svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="M21 15l-5-5L5 21" />
+            </svg>
+            <div class="ph-label">Screenshot 4</div>
+          </div>
+          <div class="caption">Profile</div>
+        </div>
+        <div class="gallery-item">
+          <div class="shot">
+            <svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="M21 15l-5-5L5 21" />
+            </svg>
+            <div class="ph-label">Screenshot 5</div>
+          </div>
+          <div class="caption">Notifications</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      Requires Android. Enable "Install from unknown sources" if prompted during installation.
+    </div>
+  </footer>
+
+</body>
+
+</html>
